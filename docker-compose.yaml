@@ -1,0 +1,33 @@
+---
+version: "3.8"
+
+
+services:
+
+  livy:
+    image: livy-base:0.8.0
+    # build:
+    #   context: .
+    #   dockerfile: base.Dockerfile
+    container_name: livy
+    command: livy
+    ports:
+      - target: 8998
+        published: 8998
+        mode: host
+    volumes:
+      - type: bind
+        source: ${APPS_LOGS}/livy
+        target: /tmp/logs/livy
+    networks:
+      - main-overlay-network
+    env_file:
+      - ./spark.env
+      - ./hadoop.env
+      - ./livy.env
+
+networks:
+  main-overlay-network:
+    external: true
+    driver: overlay
+    attachable: true
