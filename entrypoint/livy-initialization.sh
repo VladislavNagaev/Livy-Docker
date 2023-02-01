@@ -6,8 +6,12 @@ if [ "${COMMAND}" == "livy" ]; then
 
     echo "Starting Livy ..."
 
-    mkdir -p ${LIVY_LOG_DIR}
+    ${LIVY_HOME}/bin/livy-server start
 
-    ${LIVY_HOME}/bin/livy-server 
+    echo "Livy started!"
+
+    tail -f /dev/null
 
 fi
+
+exit $?

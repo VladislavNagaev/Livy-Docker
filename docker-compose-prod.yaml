@@ -15,14 +15,19 @@ services:
         published: 8998
         mode: host
     volumes:
-      - type: volume
-        source: livy-volume
+      - type: bind
+        source: ${APPS_LOGS}/livy
         target: /tmp/logs/livy
+    networks:
+      - main-overlay-network
     env_file:
-      - ./spark.env
-      - ./hadoop.env
-      - ./livy.env
+      - ${APPS_ENV}/spark.env
+      - ${APPS_ENV}/hadoop.env
+      - ${APPS_ENV}/livy.env
 
 
-volumes:
-  livy-volume:
+networks:
+  main-overlay-network:
+    external: true
+    driver: overlay
+    attachable: true
