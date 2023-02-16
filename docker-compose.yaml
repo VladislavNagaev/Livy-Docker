@@ -18,10 +18,20 @@ services:
       - type: volume
         source: livy-volume
         target: /tmp/logs/livy
+    networks:
+      - main-network
     env_file:
       - ./spark.env
       - ./hadoop.env
       - ./livy.env
+
+
+networks:
+  main-network:
+    name: main-network
+    external: false
+    driver: bridge
+    attachable: false
 
 
 volumes:
