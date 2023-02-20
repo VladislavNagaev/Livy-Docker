@@ -24,6 +24,7 @@ services:
       - ${APPS_ENV}/spark.env
       - ${APPS_ENV}/hadoop.env
       - ${APPS_ENV}/livy.env
+    restart: always
 
 
 networks:
