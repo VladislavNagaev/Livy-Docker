@@ -9,6 +9,7 @@ services:
     #   context: .
     #   dockerfile: base.Dockerfile
     container_name: livy
+    hostname: livy
     command: livy
     ports:
       - target: 8998

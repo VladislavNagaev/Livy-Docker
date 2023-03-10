@@ -1,17 +1,17 @@
 #!/bin/bash
 
-COMMAND="${1:-}"
+COMMAND="${1:-}";
 
 if [ "${COMMAND}" == "livy" ]; then
 
-    echo "Starting Livy ..."
+    echo -e "${blue_b}Starting Livy ...${reset_font}";
 
-    ${LIVY_HOME}/bin/livy-server start
+    ${LIVY_HOME}/bin/livy-server start;
 
-    echo "Livy started!"
+    echo -e "${blue_b}Livy started!${reset_font}";
 
-    tail -f /dev/null
+    tail -f /dev/null;
 
-fi
+fi;
 
-exit $?
+exit $?;
